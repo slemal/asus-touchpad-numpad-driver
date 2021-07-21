@@ -153,7 +153,7 @@ numlock=False
 
 # Process events while running #
 while True:
-
+    """
     # If keyboard sends numlock event with F8 key tap, enable/disable touchpad events #
     for e in d_k.events():
         if e.matches(EV_KEY.KEY_F8) and e.value == 1:
@@ -162,7 +162,7 @@ while True:
                 activate_numlock()
             else:
                 deactivate_numlock()
-
+    """
     # If touchpad sends tap events, convert x/y position to numlock key and send it #
     for e in d_t.events():
         # ignore others events, except position and finger events
