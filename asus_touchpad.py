@@ -208,7 +208,7 @@ while True:
         if (
             e.matches(EV_KEY.BTN_TOOL_FINGER) and
             e.value == 1 and
-            (x > 0.95 * maxx) and (y < 0.05 * maxy)
+            (x > 0.94 * maxx) and (y < 0.15 * maxy)
         ):
             finger = 0
             numlock = not numlock
@@ -221,7 +221,7 @@ while True:
         if (
             e.matches(EV_KEY.BTN_TOOL_FINGER) and
             e.value == 1 and
-            (x < 0.05 * maxx) and (y < 0.05 * maxy)
+            (x < 0.06 * maxx) and (y < 0.15 * maxy)
         ):
             finger = 0
             launch_calculator()
@@ -236,10 +236,10 @@ while True:
             finger = 2
 
             try:
-                col = math.floor(model_layout.cols * x / maxx)
-                row = math.floor((model_layout.rows * y / maxy) - 0.3) # Subtract 0.3 (a third key) as the UX581L has about a third key space at the top
-
-                if row < 0:
+                col = math.floor(model_layout.cols * (x / maxx - 0.06) / 0.88)
+                row = math.floor(model_layout.rows * (y / maxy - 0.15) / 0.81)
+                
+                if col < 0 or row < 0:
                     continue
 
                 value = model_layout.keys[row][col]

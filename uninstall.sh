@@ -6,7 +6,7 @@ then
 	exit 1
 fi
 
-modprobe -r i2c-dev
+#modprobe -r i2c-dev
 
 if [[ $? != 0 ]]
 then
