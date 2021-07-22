@@ -239,7 +239,7 @@ while True:
                 col = math.floor(model_layout.cols * (x / maxx - 0.06) / 0.88)
                 row = math.floor(model_layout.rows * (y / maxy - 0.15) / 0.81)
                 
-                if col < 0 or row < 0:
+                if col < 0 or row < 0 or col >= model_layout.cols or row >= model_layout.rows:
                     continue
 
                 value = model_layout.keys[row][col]
