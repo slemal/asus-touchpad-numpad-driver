@@ -208,7 +208,7 @@ while True:
         if (
             e.matches(EV_KEY.BTN_TOOL_FINGER) and
             e.value == 1 and
-            (x > 0.94 * maxx) and (y < 0.15 * maxy)
+            (x > 1 - model_layout.numlock_x * maxx) and (y < model_layout.numlock_y * maxy)
         ):
             finger = 0
             numlock = not numlock
@@ -221,7 +221,7 @@ while True:
         if (
             e.matches(EV_KEY.BTN_TOOL_FINGER) and
             e.value == 1 and
-            (x < 0.06 * maxx) and (y < 0.15 * maxy)
+            (x < model_layout.calc_x * maxx) and (y < model_layout.calc_y * maxy)
         ):
             finger = 0
             launch_calculator()
@@ -236,8 +236,8 @@ while True:
             finger = 2
 
             try:
-                col = math.floor(model_layout.cols * (x / maxx - 0.06) / 0.88)
-                row = math.floor(model_layout.rows * (y / maxy - 0.15) / 0.81)
+                col = math.floor(model_layout.cols * (x / maxx - model_layout.left_offset) / (1 - model_layout.left_offset - model_layout.right_offset))
+                row = math.floor(model_layout.rows * (y / maxy - model_layout.top_offset) / (1 - model_layout.top_offset - model_layout.bot_offset))
                 
                 if col < 0 or row < 0 or col >= model_layout.cols or row >= model_layout.rows:
                     continue

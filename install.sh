@@ -46,21 +46,13 @@ fi
 
 echo
 echo "Select models keypad layout:"
-PS3='Please enter your choice [1-4]: '
-options=("m433ia" "ux433fa" "ux581l" "Quit")
+PS3='Please enter your choice [1-2]: '
+options=("ux363ea" "Quit")
 select opt in "${options[@]}"
 do
     case "$opt" in
-        "m433ia")
-            model=m433ia
-            break
-            ;;
-        "ux433fa")
-            model=ux433fa
-            break
-            ;;
-        "ux581l" )
-            model=ux581l
+        "ux363ea")
+            model=ux363ea
             break
             ;;
         "Quit")
