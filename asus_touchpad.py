@@ -208,7 +208,7 @@ while True:
         if (
             e.matches(EV_KEY.BTN_TOOL_FINGER) and
             e.value == 1 and
-            (x > 1 - model_layout.numlock_x * maxx) and (y < model_layout.numlock_y * maxy)
+            (x > (1 - model_layout.numlock_x) * maxx) and (y < model_layout.numlock_y * maxy)
         ):
             finger = 0
             numlock = not numlock
