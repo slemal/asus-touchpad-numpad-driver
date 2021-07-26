@@ -82,7 +82,7 @@ fd_k = open('/dev/input/event' + str(keyboard), 'rb')
 fcntl(fd_k, F_SETFL, O_NONBLOCK)
 d_k = Device(fd_k)
 
-model = 'm433ia' # Model used in the derived script (with symbols)
+model = 'ux363ea' # Model used in the derived script (with symbols)
 
 # KEY_5:6
 # KEY_APOSTROPHE:40
