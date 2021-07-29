@@ -116,7 +116,8 @@ udev = dev.create_uinput_device()
 finger = 0
 value = 0
 
-onCmd = "i2ctransfer -f -y " + device_id + " w13@0x15 0x05 0x00 0x3d 0x03 0x06 0x00 0x07 0x00 0x0d 0x14 0x03 0x01 0xad"
+brightness = 1
+onCmd = "i2ctransfer -f -y " + device_id + " w13@0x15 0x05 0x00 0x3d 0x03 0x06 0x00 0x07 0x00 0x0d 0x14 0x03 %#04x 0xad"
 offCmd = "i2ctransfer -f -y " + device_id + " w13@0x15 0x05 0x00 0x3d 0x03 0x06 0x00 0x07 0x00 0x0d 0x14 0x03 0x00 0xad"
 
 def activate_numlock():
@@ -126,7 +127,7 @@ def activate_numlock():
     ]
     udev.send_events(events)
     d_t.grab()
-    subprocess.call(onCmd, shell=True)
+    subprocess.call(onCmd % brightness, shell=True)
 
 def deactivate_numlock():
     events = [
@@ -217,14 +218,18 @@ while True:
             else:
                 deactivate_numlock()
 
-        # Check if caclulator was hit #
+        # Check if utility key was hit #
         if (
             e.matches(EV_KEY.BTN_TOOL_FINGER) and
             e.value == 1 and
             (x < model_layout.calc_x * maxx) and (y < model_layout.calc_y * maxy)
         ):
             finger = 0
-            launch_calculator()
+            # launch_calculator()
+            brightness ^= 25
+            print(brightness)
+            if numlock:
+            	activate_numlock()
             continue
 
         # If touchpad mode, ignore #
