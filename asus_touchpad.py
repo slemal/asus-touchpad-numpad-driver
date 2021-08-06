@@ -226,9 +226,8 @@ while True:
         ):
             finger = 0
             # launch_calculator()
-            brightness ^= 25
-            print(brightness)
             if numlock:
+            	brightness ^= 25
             	activate_numlock()
             continue
 
