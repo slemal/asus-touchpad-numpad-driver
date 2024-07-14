@@ -57,7 +57,7 @@ sudo i2cdetect -l
 
 Now you can get the latest ASUS Touchpad Numpad Driver for Linux from Git and install it using the following commands.
 ```
-git clone https://github.com/mohamed-badaoui/asus-touchpad-numpad-driver
+git clone https://github.com/slemal/asus-touchpad-numpad-driver
 cd asus-touchpad-numpad-driver
 sudo ./install.sh
 ```
